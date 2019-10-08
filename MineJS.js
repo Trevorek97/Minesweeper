@@ -1,10 +1,5 @@
 
-function test()
-{
-    alert();
-}
-
-/*function makeTable(tab,size)
+function makeTable(tab,size)
 {
     var i,j;
     for(i=0;i<size;i++)
@@ -73,4 +68,4 @@ function showTable(tab,size)
         document.write("<br/>");
     }
 }
-*/
+
