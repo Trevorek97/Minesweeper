@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <title>Minesweeper DK</title>
+    <meta charset="utf-8"> <!-- polskie znaki -->
+    <link rel="stylesheet" href="minestyle.css">
+    <script type="text/javascript" src="MineJS.js"></script> <!-- nie działa-->
+</head>
+
+<body>
+    <hr>
+        <p>Minesweeper</p>
+    <hr>
+
+
+    <!--LOSOWANIE MIN-->
+
+    <script>
+       var i,j,k,sum;
+        var tab=[];
+
+        for(i=0;i<10;i++)
+        {
+            tab[i]= [];
+            for(j=0;j<10;j++)
+            {
+                tab[i][j]='-';
+            }
+        }
+
+        //Losowanie min
+        k=0;
+        do
+        {
+            i = Math.round((Math.random() * 9));
+            j = Math.round((Math.random() * 9));
+
+            if (tab[i][j] !== '*')
+            {
+                tab[i][j] = '*';
+                k++;
+            }
+        } while(k<10);
+
+        for(i=0;i<10;i++)
+        {
+            for(j=0;j<10;j++)
+            {
+                if(tab[i][j]!== '*')
+                {
+                    sum=0;
+                    if(i-1 >= 0 && j-1 >= 0 && tab[i-1][j-1] === '*')  sum+=1; //LG
+                    if(i-1 >= 0 && tab[i-1][j]==='*')                 sum+=1; //G
+                    if(i-1 >= 0 && j+1<10 && tab[i-1][j+1]==='*')     sum+=1; //PG
+                    if(j-1 >= 0 && tab[i][j-1] ==='*')                sum+=1; //L
+                    if(j+1 <10 && tab[i][j+1]==='*')                 sum+=1; //P
+                    if(i+1 <10 && j-1 >= 0 && tab[i+1][j-1]==='*')     sum+=1; //LD
+                    if(i+1 <10 && tab[i+1][j]==='*')                 sum+=1; //D
+                    if(j+1 <10 && i+1 < 10 && tab[i+1][j+1]==='*')    sum+=1; //PD
+                    tab[i][j]=sum;
+                }
+
+            }
+        }
+
+        //Wypisanie tablicy
+        for(i=0;i<10;i++)
+        {
+            for (j = 0; j < 10; j++)
+            {
+                document.write(tab[i][j]);
+            }
+            document.write("<br/>");
+        }
+    </script>
+
+</body>
+</html>
