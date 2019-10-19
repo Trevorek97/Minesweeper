@@ -46,8 +46,19 @@ body
     color:darkgray;
 }
 
-.footer
+#startButton
 {
-
+    display: block;
+    margin-left: auto;
+    margin-right:auto;
+    border-radius:15px;
+    background-color: lightgrey;
+    color: darkslategrey;
+    font-size:30px;
+    border-style: none;
 }
 
+#startButton:hover
+{
+background-color: gray;
+}
