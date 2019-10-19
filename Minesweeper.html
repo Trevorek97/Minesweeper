@@ -1,29 +1,58 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <title>Minesweeper DK</title>
-    <meta charset="utf-8"> <!-- polskie znaki -->
-    <link rel="stylesheet" href="minestyle.css">
-    <script type="text/javascript" src="MineJS.js"></script> <!-- nie działa-->
+    <title>Saper</title>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="MineJS.js"></script>
+    <link rel="stylesheet" type="text/css" href="minesweeperstyle.css">
 </head>
 
 <body>
-    <hr>
-        <p>Minesweeper</p>
-    <hr>
 
-
-    <!--LOSOWANIE MIN-->
+    <hr>
+        <p class="title">SAPER</p>
+    <hr>
 
     <script>
-
         var tab=[];
+        var size = 10;
+        makeTable(tab,size,'-');
+        setMines(tab,size);
+        setNumbers(tab,size);
+    </script>
 
-        makeTable(tab,10);
-        setMines(tab,10);
-        setNumbers(tab,10);
-        showTable(tab,10);
+    <div class="grid-container">
+        <script>
+            showTableA(tab,size);
+        </script>
+    </div>
 
+
+    <script>
+        var game=true;
+        var a = document.querySelectorAll("#idmine");
+        for(i=0;i<100;i++)
+        {
+             a[i].onclick=function()
+             {
+                if(game===true)
+                {
+                    this.style.backgroundColor = "darkgray";
+                    if (this.innerHTML === '*')
+                    {
+                        alert("GAME OVER");
+                        game = false;
+                        this.style.color = "black";
+                        this.style.backgroundColor = "red";
+                    }
+                    else if (this.innerHTML === '0') this.style.color = "darkgray";
+                    else if (this.innerHTML === '1') this.style.color = "blue";
+                    else if (this.innerHTML === '2') this.style.color = "green";
+                    else if (this.innerHTML === '3') this.style.color = "red";
+                    else if (this.innerHTML === '4') this.style.color = "darkviolet";
+                }
+            };
+        }
     </script>
 
 </body>

@@ -1,5 +1,5 @@
 
-function makeTable(tab,size)
+function makeTable(tab,size, sign)
 {
     var i,j;
     for(i=0;i<size;i++)
@@ -7,7 +7,7 @@ function makeTable(tab,size)
         tab[i]= [];
         for(j=0;j<size;j++)
         {
-            tab[i][j]='-';
+            tab[i][j]=sign;
         }
     }
 }
@@ -49,23 +49,32 @@ function setNumbers(tab,size)
                 if (i + 1 < size && j - 1 >= 0 && tab[i + 1][j - 1] === '*') sum += 1; //LD
                 if (i + 1 < size && tab[i + 1][j] === '*') sum += 1; //D
                 if (j + 1 < size && i + 1 < size && tab[i + 1][j + 1] === '*') sum += 1; //PD
+
                 tab[i][j] = sum;
+                //if(sum !== 0)
+                  //  tab[i][j] = sum;
+
             }
 
         }
     }
 }
 
-function showTable(tab,size)
+function showTableA(tab,size)
 {
     var i,j;
+    var idmine =0;
     for(i=0;i<size;i++)
     {
         for (j = 0; j < size; j++)
         {
-            document.write(tab[i][j]);
+            //document.write(tab[i][j] + ' ');
+
+           // document.write("<div class='minefield' id='1mine" + idmine + "'>" + tab[i][j] + "</div>");
+            document.write("<div class='minefield' id='idmine'>" + tab[i][j] + "</div>");
+            idmine++;
         }
-        document.write("<br/>");
+//        document.write("<br/>");
     }
 }
 
